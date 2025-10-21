@@ -1,0 +1,396 @@
+/*
+Theme Name: URVENA FIX
+Theme URI: https://urvenafix.de
+Author: URVENA Team
+Author URI: https://urvenafix.de
+Description: Professionelles WordPress-Theme für URVENA FIX Reifenservice in Darmstadt. Modern, schnell und mobilfreundlich mit verbesserter Responsivität und Interaktivität.
+Version: 1.1.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: urvena-fix
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, automotive, business
+
+URVENA FIX WordPress Theme, Copyright 2025
+URVENA FIX is distributed under the terms of the GNU GPL.
+*/
+
+/**
+ * URVENA FIX Main Stylesheet
+ * Modern, minimal design for tire service website
+ * Version: 1.1.0 - Enhanced with improved responsiveness, animations, and accessibility
+ * Last Updated: October 21, 2025
+ */
+
+/* ==========================================================================
+   1. CSS Variables & Reset
+   ========================================================================== */
+
+:root {
+	--color-primary: #d32f2f;
+	--color-primary-dark: #b71c1c;
+	--color-primary-light: #f44336;
+	--color-secondary: #212121;
+	--color-secondary-light: #424242;
+	--color-text: #212121;
+	--color-text-light: #666;
+	--color-border: #e0e0e0;
+	--color-bg: #ffffff;
+	--color-bg-light: #f5f5f5;
+	--color-success: #4caf50;
+	--color-error: #f44336;
+	
+	--font-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--font-heading: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	
+	--spacing-xs: 0.5rem;
+	--spacing-sm: 1rem;
+	--spacing-md: 2rem;
+	--spacing-lg: 3rem;
+	--spacing-xl: 4rem;
+	
+	--border-radius: 8px;
+	--border-radius-sm: 4px;
+	--border-radius-lg: 12px;
+	
+	--shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+	--shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+	--shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+	
+	--transition: all 0.3s ease;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--font-primary);
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-heading);
+	font-weight: 700;
+	line-height: 1.2;
+	margin-top: 0;
+	margin-bottom: var(--spacing-sm);
+	color: var(--color-secondary);
+}
+
+h1 { font-size: clamp(2rem, 4vw, 2.5rem); }
+h2 { font-size: clamp(1.75rem, 3.5vw, 2rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+h4 { font-size: clamp(1.125rem, 2vw, 1.25rem); }
+h5 { font-size: 1.125rem; }
+h6 { font-size: 1rem; }
+
+p { margin-top: 0; margin-bottom: var(--spacing-sm); }
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: var(--transition);
+}
+
+a:hover {
+	color: var(--color-primary-dark);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+}
+
+/* ==========================================================================
+   2. Layout & Container
+   ========================================================================== */
+
+.site {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.site-main {
+	flex: 1;
+}
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--spacing-md);
+}
+
+/* ==========================================================================
+   3. Header
+   ========================================================================== */
+
+.site-header {
+	background-color: var(--color-bg);
+	border-bottom: 1px solid var(--color-border);
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: var(--shadow-sm);
+	transition: all 0.3s ease;
+}
+
+.header-container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: var(--spacing-sm) var(--spacing-md);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--spacing-md);
+}
+
+.site-branding {
+	flex-shrink: 0;
+}
+
+.site-logo-text {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--color-secondary);
+	text-decoration: none;
+}
+
+.main-navigation {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+}
+
+.nav-menu {
+	display: flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	gap: var(--spacing-md);
+}
+
+.nav-menu a {
+	color: var(--color-text);
+	font-weight: 500;
+	padding: var(--spacing-xs) var(--spacing-sm);
+	border-radius: var(--border-radius-sm);
+	transition: var(--transition);
+}
+
+.header-phone {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--spacing-xs);
+	padding: var(--spacing-xs) var(--spacing-sm);
+	background-color: var(--color-primary);
+	color: white;
+	border-radius: var(--border-radius);
+	font-weight: 600;
+	transition: var(--transition);
+}
+
+/* ==========================================================================
+   EMERGENCY OVERRIDE STYLES - Force visibility
+   ========================================================================== */
+
+/* Ensure body has background and text color  */
+body {
+	background-color: #ffffff !important;
+	color: #212121 !important;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Force header to be visible */
+.site-header {
+	background-color: #ffffff !important;
+	border-bottom: 1px solid #e0e0e0 !important;
+	padding: 1rem 0 !important;
+	position: relative !important;
+	z-index: 100 !important;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* Force container styles */
+.header-container,
+.hero-container,
+.container {
+	max-width: 1200px !important;
+	margin: 0 auto !important;
+	padding: 0 2rem !important;
+}
+
+/* Force header layout */
+.header-container {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	gap: 2rem !important;
+	padding: 1rem 2rem !important;
+}
+
+/* Force logo/branding styles */
+.site-branding a,
+.site-logo-text {
+	font-size: 1.5rem !important;
+	font-weight: 700 !important;
+	color: #212121 !important;
+	text-decoration: none !important;
+}
+
+/* Force navigation styles */
+.main-navigation {
+	flex: 1 !important;
+	display: flex !important;
+	justify-content: center !important;
+}
+
+.nav-menu {
+	display: flex !important;
+	list-style: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	gap: 2rem !important;
+	align-items: center !important;
+}
+
+.nav-menu li {
+	margin: 0 !important;
+}
+
+.nav-menu a {
+	color: #212121 !important;
+	text-decoration: none !important;
+	font-weight: 500 !important;
+	padding: 0.5rem 1rem !important;
+	border-radius: 4px !important;
+	transition: all 0.3s ease !important;
+}
+
+.nav-menu a:hover {
+	background-color: #d32f2f !important;
+	color: white !important;
+}
+
+/* Force header phone button */
+.header-phone {
+	background-color: #d32f2f !important;
+	color: white !important;
+	padding: 0.75rem 1.5rem !important;
+	border-radius: 8px !important;
+	text-decoration: none !important;
+	font-weight: 600 !important;
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 0.5rem !important;
+}
+
+.header-phone:hover {
+	background-color: #b71c1c !important;
+	color: white !important;
+}
+
+/* Force main content area */
+.site-main {
+	min-height: 60vh !important;
+	padding: 2rem 0 !important;
+}
+
+/* Force hero section if it exists */
+.hero-section {
+	background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%) !important;
+	padding: 4rem 0 !important;
+	margin: 0 !important;
+}
+
+.hero-container {
+	display: grid !important;
+	grid-template-columns: 1fr 1fr !important;
+	gap: 3rem !important;
+	align-items: center !important;
+}
+
+.hero-title {
+	font-size: 3rem !important;
+	color: #212121 !important;
+	margin-bottom: 1rem !important;
+	line-height: 1.1 !important;
+}
+
+.hero-subtitle {
+	font-size: 1.25rem !important;
+	color: #666 !important;
+	margin-bottom: 2rem !important;
+}
+
+/* Force button styles */
+.btn {
+	display: inline-block !important;
+	padding: 12px 24px !important;
+	background-color: #d32f2f !important;
+	color: white !important;
+	text-decoration: none !important;
+	border-radius: 8px !important;
+	font-weight: 600 !important;
+	transition: all 0.3s ease !important;
+	border: none !important;
+	cursor: pointer !important;
+}
+
+.btn:hover {
+	background-color: #b71c1c !important;
+	color: white !important;
+	transform: translateY(-2px) !important;
+}
+
+.btn-secondary {
+	background-color: #212121 !important;
+}
+
+.btn-secondary:hover {
+	background-color: #424242 !important;
+}
+
+/* Force responsive design */
+@media (max-width: 768px) {
+	.header-container {
+		flex-direction: column !important;
+		gap: 1rem !important;
+	}
+	
+	.nav-menu {
+		flex-direction: column !important;
+		gap: 1rem !important;
+	}
+	
+	.hero-container {
+		grid-template-columns: 1fr !important;
+		text-align: center !important;
+	}
+	
+	.hero-title {
+		font-size: 2rem !important;
+	}
+}
+
