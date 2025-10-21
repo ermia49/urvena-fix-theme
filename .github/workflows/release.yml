@@ -1,0 +1,52 @@
+name: 🚀 Release Theme Package
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🏗️ Create theme package
+        run: |
+          # Remove git files and create clean package
+          rm -rf .git .github
+          cd ..
+          zip -r "urvena-fix-theme-${GITHUB_REF#refs/tags/}.zip" urvena-fix/
+          
+      - name: 📝 Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ../urvena-fix-theme-*.zip
+          body: |
+            ## 🚗 URVENA FIX WordPress Theme
+            
+            ### ✨ What's New in this Release
+            - Complete mobile-responsive design
+            - Professional automotive services theme
+            - SEO optimized with schema markup
+            - Touch-friendly mobile interface
+            
+            ### 🔧 Installation
+            1. Download the theme package
+            2. Upload to `/wp-content/themes/`
+            3. Activate in WordPress admin
+            4. Configure via WordPress Customizer
+            
+            ### 📱 Mobile Features
+            - Responsive header with optimized buttons
+            - Footer-based navigation for mobile
+            - Touch-friendly service cards
+            - Clean mobile user experience
+            
+            ### 🏢 Business Details
+            - **URVENA FIX** - Mainzer Str. 70, 64293 Darmstadt
+            - Professional tire and automotive services
+            - German-optimized SEO and content
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
