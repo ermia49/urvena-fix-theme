@@ -8,90 +8,21 @@
 
 get_header(); ?>
 
-<div class="booking-page">
+<div class="booking-page" style="padding: 2rem 0; min-height: 60vh;">
 	<div class="container">
-		<div class="booking-header" itemscope itemtype="https://schema.org/Service">
-			<h1 itemprop="name">Termin buchen bei URVENA FIX</h1>
-			<p itemprop="description">Buchen Sie schnell und einfach Ihren Termin bei URVENA FIX in Darmstadt. Wählen Sie Ihren gewünschten Service und einen passenden Terminslot. Professioneller Reifenservice mit fairen Preisen.</p>
+		<div class="booking-header" itemscope itemtype="https://schema.org/Service" style="text-align: center; margin-bottom: 2rem;">
+			<h1 itemprop="name" style="color: #dc3545; font-size: 2.5rem; margin-bottom: 1rem;">Termin buchen bei URVENA FIX</h1>
+			<p itemprop="description" style="font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto;">Buchen Sie schnell und einfach Ihren Termin bei URVENA FIX in Darmstadt. Wählen Sie Ihren gewünschten Service und einen passenden Terminslot. Professioneller Reifenservice mit fairen Preisen.</p>
 			
-			<div class="booking-hero-image" style="text-align: center; margin: 2rem 0;">
-				<img 
-					src="<?php echo esc_url( home_url( '/wp-content/uploads/2025/10/Urvena1.png' ) ); ?>" 
-					alt="URVENA FIX Reifenservice Terminbuchung - Professionelle Werkstatt in Darmstadt"
-					title="Jetzt Termin buchen bei URVENA FIX - Reifenservice Darmstadt"
-					style="max-width: 400px; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(220, 53, 69, 0.15);"
-					loading="eager"
-					itemprop="image"
-				/>
+			<!-- Bookly Booking Form -->
+			<div class="bookly-form-container" style="margin: 2rem auto; max-width: 1000px;">
+				<?php echo do_shortcode('[bookly-form]'); ?>
 			</div>
 		</div>
+	</div>
+</div>
 
-		<div class="booking-form-container">
-			<form id="appointment-booking-form" class="booking-form">
-				<?php wp_nonce_field( 'urvena_appointment_nonce', 'appointment_nonce' ); ?>
-				
-				<div class="form-step active" id="step-1">
-					<h2>1. Service auswählen</h2>
-					<div class="service-selection">
-						<?php
-						// Get available services (you can create custom post type or use predefined services)
-						$services = array(
-							1 => array( 
-								'name' => 'Reifenwechsel', 
-								'description' => 'Professioneller Wechsel von Sommer- auf Winterreifen oder umgekehrt',
-								'duration' => '30 Min',
-								'price' => 'ab 25€'
-							),
-							2 => array( 
-								'name' => 'Reifenreparatur', 
-								'description' => 'Fachgerechte Reparatur von Reifenschäden und Plattfüßen',
-								'duration' => '45 Min',
-								'price' => 'ab 15€'
-							),
-							3 => array( 
-								'name' => 'Reifeneinlagerung', 
-								'description' => 'Sichere und fachgerechte Einlagerung Ihrer Reifen über die Saison',
-								'duration' => '15 Min',
-								'price' => 'ab 40€/Saison'
-							),
-							4 => array( 
-								'name' => 'Achsvermessung', 
-								'description' => 'Präzise Vermessung und Einstellung der Fahrzeugachsen',
-								'duration' => '60 Min',
-								'price' => 'ab 60€'
-							),
-							5 => array( 
-								'name' => 'Radwuchtung', 
-								'description' => 'Professionelle Auswuchtung für ruhigen Lauf und weniger Verschleiß',
-								'duration' => '30 Min',
-								'price' => 'ab 20€'
-							),
-							6 => array( 
-								'name' => 'Kostenlose Beratung', 
-								'description' => 'Umfassende Beratung zu Reifen, Service und Fahrzeugtechnik',
-								'duration' => '20 Min',
-								'price' => 'Kostenlos'
-							)
-						);
-						
-						foreach ( $services as $id => $service ) : ?>
-							<div class="service-option">
-								<input type="radio" id="service-<?php echo $id; ?>" name="service_id" value="<?php echo $id; ?>" required>
-								<label for="service-<?php echo $id; ?>" class="service-card">
-									<div class="service-info">
-										<h3><?php echo esc_html( $service['name'] ); ?></h3>
-										<p><?php echo esc_html( $service['description'] ); ?></p>
-										<div class="service-details">
-											<span class="duration"><i class="fas fa-clock"></i> <?php echo esc_html( $service['duration'] ); ?></span>
-											<span class="price"><i class="fas fa-euro-sign"></i> <?php echo esc_html( $service['price'] ); ?></span>
-										</div>
-									</div>
-								</label>
-							</div>
-						<?php endforeach; ?>
-					</div>
-					<button type="button" class="btn-next" onclick="nextStep()">Weiter</button>
-				</div>
+<?php get_footer(); ?>
 
 				<div class="form-step" id="step-2">
 					<h2>2. Datum und Uhrzeit wählen</h2>
